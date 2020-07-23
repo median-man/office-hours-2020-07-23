@@ -1,3 +1,4 @@
+require("dotenv").config();
 // Requiring necessary npm packages
 const express = require("express");
 const session = require("express-session");
@@ -15,7 +16,11 @@ app.use(express.json());
 app.use(express.static("public"));
 // We need to use sessions to keep track of our user's login status
 app.use(
-  session({ secret: process.env.SERVER_SECRET, resave: true, saveUninitialized: true })
+  session({
+    secret: process.env.SERVER_SECRET,
+    resave: true,
+    saveUninitialized: true
+  })
 );
 app.use(passport.initialize());
 app.use(passport.session());
